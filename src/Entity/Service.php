@@ -11,7 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
- * @ApiResource
+ * @ApiResource(collectionOperations={"get"}, itemOperations={"get"})
  */
 class Service
 {
