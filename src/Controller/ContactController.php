@@ -49,6 +49,20 @@ class ContactController extends AbstractController
     {
 
         $mailParamArray = $request->toArray();
+        $isError = false;
+        $errors = [];
+        foreach ($mailParamArray as $paramName => $paramValue) {
+            if ($paramValue == null || $paramValue == "") {
+                $isError = true;
+                $errors[] = 
+                    $paramName . " should not be empty."
+                ;
+            }
+        }
+        if ($isError) {
+            return $this->json(["status" => "failed", "simpleErrors" => $errors, "extendedErrors" => []]);
+        }
+
         $mail = (new Mail())
             ->setFirstName($mailParamArray["firstName"])
             ->setLastName($mailParamArray["lastName"])
@@ -72,7 +86,7 @@ class ContactController extends AbstractController
 
             $errors = [];
             foreach ($form->getErrors(true) as $error) {
-                $errors[] = ["error" => $error->getMessage()];
+                $errors[] = $error->getMessage();
             }
 
             return $this->json(["status" => "failed", "simpleErrors" => $errors, "extendedErrors" => $form->getErrors(true)]);
