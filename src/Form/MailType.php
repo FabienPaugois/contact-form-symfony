@@ -30,6 +30,7 @@ class MailType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Mail::class,
+            'csrf_protection' => false
         ]);
     }
 }
