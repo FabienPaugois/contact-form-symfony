@@ -21,13 +21,13 @@ class Mail
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="'{{ value }}' should not be blank.)
+     * @Assert\NotBlank(message="'{{ value }}' should not be blank.")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="'{{ value }}' should not be blank.)
+     * @Assert\NotBlank(message="'{{ value }}' should not be blank.")
      */
     private $lastName;
 
@@ -40,20 +40,20 @@ class Mail
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="'{{ value }}' should not be blank.)
+     * @Assert\NotBlank(message="'{{ value }}' should not be blank.")
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="mails")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank(message="'{{ value }}' should not be blank.)
+     * @Assert\NotBlank(message="'{{ value }}' should not be blank.")
      */
     private $service;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime(message="'{{ value }}' is not a valid DateTime.)
+     * @Assert\DateTime(message="'{{ value }}' is not a valid DateTime.")
      */
     private $sentAt;
 
